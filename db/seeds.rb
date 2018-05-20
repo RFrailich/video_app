@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+videos = Video.create([{genre: 'Action'},{genre: 'Sci-Fi'},{genre: 'News'},{genre: 'Action'}])

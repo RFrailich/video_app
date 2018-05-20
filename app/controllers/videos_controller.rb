@@ -1,4 +1,6 @@
 class VideosController < ApplicationController
+   extend SecureRandom
+
 
    def show
       @video = Video.find(params[:id])
@@ -10,5 +12,15 @@ class VideosController < ApplicationController
 
    def new
    end
+
+   def create
+      @video = Video.new(vid_params)
+      @video.save
+   end
+
+   private
+      def vid_params
+         params.require(:genre)
+      end
 
 end

@@ -1,15 +1,19 @@
-<h1 style="align:left;background-color:black;color:white;">VIDEOSMASH</h1> 
-<%= select_tag :genre, options_for_select(Video.genres) %>
+<table id="head">
+   <tr>
+      <td><h1 style="align:left;background-color:black;color:white;">VIDEOSMASH</h1></td>
+      <td><%= select_tag :genre, options_for_select(Video.genres) %></td>
+   </tr>
+</table>
 
 <div style="align:center;">
 <h2>Previously Viewed</h2>
 <hr/>
-<table>
-<% @videos.each do |vid| %>
+<table id="watched">
+   <% @videos.each do |vid| %>
    <tr>
-      <td><%= vid.title %></td><td><%= "(#{vid.genre})"</td> %>
+      <td width="150px" height="75px" style="background-color:<%=vid.colour%>"></td>
+      <td><%= "#{vid.title} (#{vid.genre})" %></td>
    </tr>
-<% end %>
+   <% end %>
 </table>
 </div>
-<% end %>
