@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2018_05_17_043546) do
 
   create_table "videos", force: :cascade do |t|
     t.string "title"
-    t.string "genre"
+    t.integer "genre", default: 0
     t.string "colour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

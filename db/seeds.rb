@@ -6,5 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Since no user has to deal with video creation, if the colour is not unique let it fail,
+# manually try again
+Video.create([{genre: :Action},{genre: :'Sci-Fi'},{genre: :News},{genre: :Action}])
 
-videos = Video.create([{genre: 'Action'},{genre: 'Sci-Fi'},{genre: 'News'},{genre: 'Action'}])

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-   get '/videos/index'
+   get '/videos/:id', to: 'videos#show', as: 'videos_show'
    resources :videos
-   root 'videos#index'
+   root :to => 'videos#display_rand'
 end

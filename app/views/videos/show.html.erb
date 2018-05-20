@@ -3,6 +3,11 @@
       <td><h1 style="align:left;background-color:black;color:white;">VIDEOSMASH</h1></td>
       <td><%= select_tag :genre, options_for_select(Video.genres) %></td>
    </tr>
+   <tr>
+      <td width="350px" height="250px" style="background-color:<%=@video.colour%>"></td>
+   </tr>
+   <tr> <td><%= @video.title %></td><td><%= "(#{@video.genre})" %></td></tr>
+   <tr><td><button>Next New Video</button></td></tr>
 </table>
 
 <div style="align:center;">
