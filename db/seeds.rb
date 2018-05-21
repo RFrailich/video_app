@@ -8,5 +8,7 @@
 
 # Since no user has to deal with video creation, if the colour is not unique let it fail,
 # manually try again
-Video.create([{genre: :Action},{genre: :'Sci-Fi'},{genre: :News},{genre: :Action}])
+Video.create([{genre: :Action},{genre: :'Sci-Fi'},{genre: :News},{genre: :Action},
+{genre: :'Game-Show'}, {genre: :'Reality-TV'}, {genre: :'Reality-TV'}, {genre: :News},
+{genre: :Music}, {genre: :Musical}])
 

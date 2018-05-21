@@ -1,7 +1,9 @@
+<%= javascript_include_tag "filter.js" %>
 <table id="head">
    <tr>
       <td><h1 style="align:left;background-color:black;color:white;">VIDEOSMASH</h1></td>
-      <td><%= select_tag :genre, options_for_select(Video.genres) %></td>
+      <td><%= select_tag :genre, options_for_select(Video.genres), :id => 'genre_picker',
+         :onchange => 'show_vids()' %></td>
    </tr>
    <tr>
       <td width="350px" height="250px" style="background-color:<%=@video.colour%>"></td>
@@ -15,7 +17,7 @@
 <hr/>
 <table id="watched">
    <% @videos.each do |vid| %>
-   <tr>
+   <tr hidden="true" class="<%=vid.genre%> vid">
       <td width="150px" height="75px" style="background-color:<%=vid.colour%>"></td>
       <td><%= "#{vid.title} (#{vid.genre})" %></td>
    </tr>

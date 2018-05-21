@@ -4,7 +4,7 @@ class VideosController < ApplicationController
 
    def show
       @video = Video.find(params[:id])
-      @videos = Video.all.where.not(:id => @video.id)
+      @videos = Video.all.where.not(:id => @video.id).order(:genre)
    end
 
    def new
