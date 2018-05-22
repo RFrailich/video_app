@@ -1,0 +1,33 @@
+<%= javascript_include_tag "filter.js" %>
+<table id="head">
+   <tr>
+      <td><div id="logo">VIDEOSMASH</div></td>
+      <td><%= select_tag :genre, options_for_select(Video.genres), :id => 'genre_picker',
+         :onchange => 'show_vids()' %></td>
+   </tr>
+</table>
+<table class="main" align="center">
+   <% if !@video.nil? %>
+     <tr>
+        <td width="450px" height="200px" style="background-color:<%=@video.colour%>"></td>
+     </tr>
+     <tr><td><span class="l"><%= @video.title %></span><span class="r"><%= "(#{@video.genre})" %></span></td></tr>
+   <% else %>
+     <tr><td>You have seen all videos of this genre</td></tr>   
+   <% end %>
+   <tr><td  align="center"><button class="next" name="genre" value="" action="/videos"
+     <% if !@video %>disabled<% end %>> Next New Video</button></td></tr>
+</table>
+
+<div class="main" align="center">
+<h4>Previously Viewed</h4>
+<hr/>
+<table id="watched">
+   <% @videos.each do |vid| %>
+   <tr hidden="true" class="<%=vid.genre%> vid">
+      <td width="150px" height="75px" style="background-color:<%=vid.colour%>"></td>
+      <td><%= "#{vid.title} (#{vid.genre})" %></td>
+   </tr>
+   <% end %>
+</table>
+</div>

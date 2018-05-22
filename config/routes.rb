@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-   get '/videos/:id', to: 'videos#show', as: 'videos_show'
+  devise_for :users
+  get 'sessions/new'
+   get '/videos', to: 'videos#index'
+   post '/videos', to: 'videos#index'
    resources :videos
-   root :to => 'videos#display_rand'
+   root :to => 'videos#index'
 end

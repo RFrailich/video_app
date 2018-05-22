@@ -7,6 +7,8 @@ class Video < ActiveRecord::Base
    before_create :gen_colour
    after_create :set_title
    
+   has_and_belongs_to_many :users
+   
    def gen_colour
       self.colour = "#" + SecureRandom.hex(3)
    end

@@ -1,10 +1,19 @@
 class VideosController < ApplicationController
    extend SecureRandom
+   layout "application"
 
-
-   def show
-      @video = Video.find(params[:id])
-      @videos = Video.all.where.not(:id => @video.id).order(:genre)
+   def index
+      rand_vid = rand(Video.count)
+      @video = Video.where.not(id: current_user.videos).offset(rand_vid).first
+      if @video
+        @video.users << current_user
+        current_user.videos << @video
+        @video.save
+        current_user.save
+        @videos = Video.where.not(id: @video.id).where(id: current_user.videos)
+      else
+       @videos = Video.all
+      end
    end
 
    def new
@@ -15,10 +24,6 @@ class VideosController < ApplicationController
       @video.save
    end
 
-   def display_rand
-      @video = Video.offset(rand(Video.count)).first
-      redirect_to video_path(@video)
-   end
 
    private
       def vid_params
