@@ -3,8 +3,13 @@ class VideosController < ApplicationController
    layout "application"
 
    def index
+      if params[:next]
+        genre = params[:next]
+      else
+        genre = Video.first.genre
+      end
       rand_vid = rand(Video.count)
-      @video = Video.where.not(id: current_user.videos).offset(rand_vid).first
+      @video = Video.where.not(id: current_user.videos).where(genre: Video.genres[genre]).offset(rand_vid).first
       if @video
         @video.users << current_user
         current_user.videos << @video

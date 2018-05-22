@@ -6,18 +6,21 @@
          :onchange => 'show_vids()' %></td>
    </tr>
 </table>
+<form  method="post">
 <table class="main" align="center">
    <% if !@video.nil? %>
      <tr>
         <td width="450px" height="200px" style="background-color:<%=@video.colour%>"></td>
      </tr>
-     <tr><td><span class="l"><%= @video.title %></span><span class="r"><%= "(#{@video.genre})" %></span></td></tr>
+     <tr><td><span class="l"><%= @video.title %></span><span class="r">
+        <%= "(#{@video.genre})" %></span></td></tr>
    <% else %>
-     <tr><td>You have seen all videos of this genre</td></tr>   
+     <tr><td>No more videos in genre</td></tr>   
    <% end %>
    <tr><td  align="center"><button class="next" name="genre" value="" action="/videos"
-     <% if !@video %>disabled<% end %>> Next New Video</button></td></tr>
+        <% if !@video %>disabled<% end %>> Next New Video</button></td></tr>
 </table>
+</form>
 
 <div class="main" align="center">
 <h4>Previously Viewed</h4>
